@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="msgStoreProcess" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <property name="uri.var.ep" value="http://localhost:5003/jms"/>
+            <log level="full"/>
+            <property description="Set Enquiry Management Environment Variable" expression="get-property('env', 'JMS')" name="uri.var.enqman" scope="default" type="STRING"/>
+            <log level="custom">
+                <property expression="get-property('uri.var.enqman')" name="EnqMan Endpoint Value"/>
+            </log>
+            <store messageStore="abcMsgStore"/>
+            <respond/>
+        </inSequence>
+        <faultSequence/>
+    </target>
+    
+</proxy>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="successMessageSeq" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+<log category="INFO" level="custom">
+    <property name="INFO SUCCESS" value="***** Inside the injected sequence ******"/>
+</log>
+<log category="INFO" level="full"/>
+    <call>
+        <endpoint key="jmsEP"/>
+    </call>
+
+</sequence>
